@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    bottom: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#container {
+    width: 100%;
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+    align-content: center;
+    background: rgba(12,205,163,1);
+    background: -moz-linear-gradient(left, rgba(12,205,163,1) 0%, rgba(193,252,211,1) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(12,205,163,1)), color-stop(100%, rgba(193,252,211,1)));
+    background: -webkit-linear-gradient(left, rgba(12,205,163,1) 0%, rgba(193,252,211,1) 100%);
+    background: -o-linear-gradient(left, rgba(12,205,163,1) 0%, rgba(193,252,211,1) 100%);
+    background: -ms-linear-gradient(left, rgba(12,205,163,1) 0%, rgba(193,252,211,1) 100%);
+    background: linear-gradient(to right, rgba(12,205,163,1) 0%, rgba(193,252,211,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0ccda3', endColorstr='#c1fcd3', GradientType=1 );
+}
+
+
+.box {
+    width: 20%;
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    animation-name: apear;    
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
+@keyframes apear {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.thumb {
+    width: 50%;
+    background-color: #fff;
+    border-radius: 80px;
+    z-index: 99999;
+}
+
+.thumb > img {
+    width: 90%;
+    margin: 0 5%;
+}
+
+.info {
+    background-color: #fff;
+    padding: 64px 24px;
+    border-radius: 10px;
+    margin-top: -64px;
+}
+
+h3 {
+    text-transform: capitalize;
+    font-size: 24px;
+}
+
