@@ -3,49 +3,44 @@ var siguiente = document.getElementById("next");
 var anterior = document.getElementById("prev");
   
 
-var data = []; //variable hecha global para utilizarla en otras funciones
+var data = []; 
 async function pokemon(path) {
-    //Para obtener los datos se debe hacer el fetch en URL
+    
     let rawPersonajes = await fetch(path)
-    //Luego se debe parsear para volverlo JSON
     let personajes = await rawPersonajes.json()  
 
-    data = personajes;//Se establece una variable para hacerla global y poder consultarla afuera
-   //Ya que se tienen los datos con el map se itera y se mapean todos los objetos que contiene
+    data = personajes;
+
+    console.log(data)
    personajes.results.map((personaje) => {
        
        var {name, url} = personaje;
-       
 
-        rawForms = "https://pokeapi.co/api/v2/pokemon-species/" + name;//Para obtener las imágenes de los pokemones agregando el nombre a la URL y obtener más información
-           fetch(rawForms)  
-           .then(function(response){                    
-               response.json()
-               .then(function(poke){
-                   realid = poke.id;
-                       if (realid < 10) {
-                           id="00" + realid;
-                       } else if (realid >= 10 && realid < 100) {
-                           id = "0" + realid;
-                       } else {
-                           id = realid;
-                       }
-                    //Se construyen las cajas de información
-                   contenedor.innerHTML += `<div class="box"><div class="thumb"><img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png"/></div><div class="info"><h3>${poke.name}</h3><p>descripción: ${poke.flavor_text_entries[3].flavor_text}</p><p>habitat: ${poke.habitat.name}</p><p>forma: ${poke.shape.name}</p></div></div>`
-                       
-               })                    
-           }) 
+       var numeros = /(\d+(\/\d)*)/g;
+       var arrayNums = url.match(numeros);
+       var realid = arrayNums[1];
+
+       if (realid < 10) {
+                id="00" + realid;
+            } else if (realid >= 10 && realid < 100) {
+                id = "0" + realid;
+            } else {
+                id = realid
+            }
+        
+       contenedor.innerHTML += `<div class="box" id="${realid}" onclick="detail(this.id); datos(this.id);"><div class="thumb"><img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png"/></div><div class="name"><h3>${name}</h3></div></div>`
+       
    });     
-   pagination()//Al finalizar las acciones se corre esta función para hacer la paginación
+   pagination()
 }
-//URL de la API
+
 pokemon("https://pokeapi.co/api/v2/pokemon/")
 
 function pagination() {
-    next = data.next;//con la variable global obtengo el enlace de la siguente página y la guardo en una variable
+    next = data.next;
     prev = data.previous;
     
-    siguiente.setAttribute("onclick","sig();");//Le pego un onclick para que corra la función sig() la cual sirve para pegar el nuevo enlace 
+    siguiente.setAttribute("onclick","sig();");
     anterior.setAttribute("onclick","ant();");    
 }
 
@@ -64,4 +59,43 @@ function ant() {
 
 function clear() {
     contenedor.innerHTML = "";
+}
+
+function detail(clickedId) {
+    detalle("https://pokeapi.co/api/v2/pokemon-species/" + clickedId)
+    
+}
+
+
+async function detalle(path) {
+    
+    let rawDetalles = await fetch(path)
+    let detalles = await rawDetalles.json();
+    
+    console.log(detalles.flavor_text_entries)
+
+    console.log(detalles.flavor_text_entries[4].flavor_text);
+
+}
+
+
+function datos(clickedId) {
+    dato("https://pokeapi.co/api/v2/pokemon/" + clickedId)
+    
+}
+
+async function dato(path) {
+    
+    let rawCaracts = await fetch(path)
+    let caract = await rawCaracts.json();
+    console.log(`Su id es: ${caract.id} y su habilidad 1 es: ${caract.abilities[0].ability.name}`/*, caract.abilities[1].ability.name*/)
+    
+    let movimientos = caract.moves;
+
+     for (var i = 0; i < movimientos.length; i++){
+         
+         console.log(`Movimiento ${i+1} es: ${movimientos[i].move.name}`);
+     }
+
+
 }
