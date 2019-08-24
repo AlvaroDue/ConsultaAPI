@@ -49,13 +49,14 @@ body {
 
 .thumb {
     width: 30%;
-    background:linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)),
+    background:linear-gradient(rgba(255,255,255,.95), rgba(255,255,255,.95)),
     url('../img/pokeball_gray.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 80px;
     z-index: 99999;
+    transition: all ease .4s;
 }
 
 .thumb > img {
@@ -71,6 +72,12 @@ body {
 
 .box:hover > .name {
     width:100%;
+}
+
+.box:hover > .thumb {
+    background:linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)),
+    url('../img/pokeball_gray.png');
+    background-size: contain;
 }
 
 .name {
@@ -113,6 +120,39 @@ h3 {
     }
 }
 
+#detallado {
+    padding:32px;
+    display: none;
+}
 
+#containerDetail {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding:24px;
+}
 
+.grassland {
+    background-color: green;
+}
+
+.cave {
+    background-color: black;
+}
+
+.urban {
+    background-color: gray;
+}
+
+.forest {
+    background-color: aquamarine;
+}
+
+.mountain {
+    background-color: brown;
+}
+
+.waters-edge {
+    background-color: blue;
+}
 

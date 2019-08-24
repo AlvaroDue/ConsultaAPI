@@ -4,7 +4,7 @@ var siguiente = document.getElementById("next");
 var anterior = document.getElementById("prev");
 var botones = document.getElementsByTagName("a");
 var cierre = document.getElementById("close");
-  
+var detailBack = document.getElementById("detallado");
 
 var data = [];
 var current = ""; 
@@ -79,6 +79,7 @@ function detail(clickedId) {
     detalle("https://pokeapi.co/api/v2/pokemon-species/" + clickedId)
     disapear()
     cierre.style.display = "block";
+    detailBack.style.display = "block";
     
 }
 
@@ -118,8 +119,8 @@ async function detalle(path) {
         descriptionThree = detalles.flavor_text_entries[31].flavor_text;
     }
 
-    contenedorDetalle.innerHTML += `<div><h3>${detalles.name}</h3><img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png"><p>Descripción:</p><p>${descriptionOne}</p><p>${descriptionTwo}</p><p>${descriptionThree}</p><p>Hábitat: ${detalles.habitat.name}</p><p>Forma: ${detalles.shape.name}</p></div>`
-      
+    contenedorDetalle.innerHTML += `<div class="contenedor"><h3>${detalles.name}</h3><img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png"><p>Descripción:</p><p>${descriptionOne}</p><p>${descriptionTwo}</p><p>${descriptionThree}</p><p>Hábitat: ${detalles.habitat.name}</p><p>Forma: ${detalles.shape.name}</p>`
+    detailBack.className = `${detalles.habitat.name}`
 
 }
 
@@ -128,6 +129,7 @@ function datos(clickedId) {
     clear()
     dato("https://pokeapi.co/api/v2/pokemon/" + clickedId)
     cierre.style.display = "block";
+    detailBack.style.display = "block";
     
 }
 
@@ -150,7 +152,7 @@ async function dato(path) {
     let movimientos = caract.moves;
 
      for (var i = 0; i < movimientos.length; i++){
-        contenedorDetalle.innerHTML += `<span> - ${movimientos[i].move.name}</span>`         
+        contenedorDetalle.innerHTML += `<span> - ${movimientos[i].move.name}</span></div>`         
      }
 
      
@@ -163,4 +165,5 @@ function cierra() {
     pokemon(current)
     reapear()
     cierre.style.display = "none";
+    detailBack.style.display = "none";
 }
