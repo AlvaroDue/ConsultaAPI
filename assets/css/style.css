@@ -49,15 +49,28 @@ body {
 
 .thumb {
     width: 30%;
-    background-color: #fff;
+    background:linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)),
+    url('../img/pokeball_gray.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     border-radius: 80px;
     z-index: 99999;
 }
 
 .thumb > img {
-    width: 80%;
-    margin: 0 5%;
+    width: 100%;
+    padding: 6px 9px;
+    transition: all ease .3s;
     
+}
+
+.box:hover > .thumb > img {
+    transform: scale(1.5);
+}
+
+.box:hover > .name {
+    width:100%;
 }
 
 .name {
@@ -67,6 +80,7 @@ body {
     border-radius: 50px;
     margin-left:-50px;
     text-align: center;
+    transition: all ease .3s;
 }
 
 
