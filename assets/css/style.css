@@ -9,30 +9,27 @@ body {
     font-family: 'Titillium Web', sans-serif;
 }
 
+#main {
+
+    background-color: #ececec;
+}
+
 #container {
     width: 100%;
     display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
     align-content: center;
-    background: rgba(12,205,163,1);
-    background: -moz-linear-gradient(left, rgba(12,205,163,1) 0%, rgba(193,252,211,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(12,205,163,1)), color-stop(100%, rgba(193,252,211,1)));
-    background: -webkit-linear-gradient(left, rgba(12,205,163,1) 0%, rgba(193,252,211,1) 100%);
-    background: -o-linear-gradient(left, rgba(12,205,163,1) 0%, rgba(193,252,211,1) 100%);
-    background: -ms-linear-gradient(left, rgba(12,205,163,1) 0%, rgba(193,252,211,1) 100%);
-    background: linear-gradient(to right, rgba(12,205,163,1) 0%, rgba(193,252,211,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0ccda3', endColorstr='#c1fcd3', GradientType=1 );
 }
 
 
 .box {
-    width: 20%;
-    margin: 2%;
+    width: 95%;
+    margin: 1% 2%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;    
     animation-name: apear;    
@@ -41,37 +38,67 @@ body {
     opacity: 0;
 }
 
+.box:hover, #close:hover {
+    cursor: pointer;
+}
+
 @keyframes apear {
     from {opacity: 0;}
     to {opacity: 1;}
 }
 
 .thumb {
-    width: 50%;
+    width: 30%;
     background-color: #fff;
     border-radius: 80px;
     z-index: 99999;
 }
 
 .thumb > img {
-    width: 90%;
+    width: 80%;
     margin: 0 5%;
     
 }
 
 .name {
-    width: 100%;
+    width: 80%;
     background-color: #fff;
-    padding: 60px 24px 32px;
-    border-radius: 10px;
-    margin-top: -64px;
+    padding: 8px 20px 8px 50px;
+    border-radius: 50px;
+    margin-left:-50px;
     text-align: center;
 }
 
 
 h3 {
     text-transform: capitalize;
-    font-size: 24px;
+    font-size: 20px;
 }
+
+
+
+@media only screen and (min-width:600px) {
+    #container {
+        flex-direction: row;
+    }
+
+    .box {
+        width: 40%;        
+                
+    }
+}
+
+@media only screen and (min-width:900px) {
+    #container {
+        flex-direction: row;
+    }
+
+    .box {
+        width: 20%;        
+                
+    }
+}
+
+
 
 

@@ -10,11 +10,32 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="container">
-
+    <div id="main">
+        <div id="container"></div>
+        <a href="#" id="prev">Ant</a>
+        <a href="#" id="next">Sig</a>  
+        <img src="assets/img/close.svg" width="24" onclick="cierra()" style="display:none" id="close"/>      
+        <div id="containerDetail"></div>        
     </div>
-    <a href="#" id="prev">Ant</a>
-    <a href="#" id="next">Sig</a>
+    
+    <!--
+        Datos a pintar
+
+        > ../pokemon
+           -Habilidad = ability 
+           -Alto = height
+           -Peso = weight
+           -Tipo = types
+
+        > ../pokemon-species
+           -Descripción = flavor_text_entries
+                   74  4, 14, 31
+                   54  3, 11, 27
+                   64  4, 13, 21
+           -Hábitat = habitat
+           -Forma = shape
+
+    -->
     <script src="assets/js/app.js"></script>
 </body>
 </html>
